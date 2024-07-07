@@ -1,0 +1,41 @@
+1.User Authentication:
+
+Implement a login system (index.php) where users can authenticate using their username and password.
+Include a registration page (register.php) for new users to create accounts.
+File Management:
+
+2.Develop a dashboard (dashboard.php or file_manager.php) as the main interface after login.
+Allow users to upload files (upload.php) which are stored in a directory (files/).
+Display uploaded files with options to download and delete them.
+User Interface and Interaction:
+
+3.Use Bootstrap (css/bootstrap.css) for styling the user interface to ensure responsiveness and visual appeal.
+Provide user-friendly messages for successful and failed operations (e.g., file uploads, deletions).
+Session Management:
+
+
+4.Establish a MySQL database connection (includes/db_connection.php) to store user credentials securely and manage file uploads.
+Functional Requirements:
+
+5.Upon successful login, redirect users to the dashboard or file manager page.
+Implement a logout feature (logout.php) to end the session and redirect users to the login page.
+
+
+DATABASE name : web_project_db
+Table (Can create using sql):
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE user_files (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    filename VARCHAR(255) NOT NULL,
+    filepath VARCHAR(255) NOT NULL,
+    uploaded_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
