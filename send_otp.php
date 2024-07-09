@@ -22,13 +22,13 @@ function sendOTP($email, $otp) {
         $mail->isSMTP();
         $mail->Host = 'smtp.gmail.com'; // Gmail SMTP server
         $mail->SMTPAuth = true;
-        $mail->Username = 'zhangyongxuan420@gmail.com'; // Your Gmail address
-        $mail->Password = 'rltygoiblwmmmous'; // Your Gmail App password
+        $mail->Username = 'kyteh01@gmail.com'; // Your Gmail address
+        $mail->Password = 'hngtwmvwzcpovlyv'; // Your Gmail App password
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port = 587;
 
         // Recipients
-        $mail->setFrom('zhangyongxuan420@gmail.com', 'File Manager');
+        $mail->setFrom('kyteh01@gmail.com', 'File Manager');
         $mail->addAddress($email);
 
         // Content

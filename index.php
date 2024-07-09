@@ -17,14 +17,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Validate username
     if (empty(trim($_POST['username']))) {
-        $username_err = 'Please enter username.';
+        $username_err = 'Please enter a valid username.';
     } else {
         $username = trim($_POST['username']);
     }
 
     // Validate password
     if (empty(trim($_POST['password']))) {
-        $password_err = 'Please enter your password.';
+        $password_err = 'Please enter a valid password.';
     } else {
         $password = trim($_POST['password']);
     }
@@ -69,10 +69,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     }
                 } else {
                     // Display an error message if username doesn't exist
-                    $username_err = 'No account found with that username.';
+                    $username_err = 'No username found.';
                 }
             } else {
-                echo 'Oops! Something went wrong. Please try again later.';
+                echo 'Something went wrong. Please try again later.';
             }
 
             // Close statement
@@ -93,32 +93,60 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>Login</title>
     <link rel="stylesheet" href="css/bootstrap.css">
     <style>
+        body {
+            background-color: #f7f7f7;
+        }
         .form-container {
             max-width: 400px;
             margin: auto;
             margin-top: 100px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-group .help-block {
+            color: #dc3545;
+        }
+        .header {
+            background-color: #f8f9fa;
+            padding: 10px 0;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .header h2 {
+            color: #007bff;
         }
     </style>
 </head>
 <body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container text-center">
+            <h2 class="mb-0">Login Page</h2>
+        </div>
+    </header>
+
+    <!-- Main Content -->
     <div class="container form-container">
-        <h2 class="text-center">Login</h2>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <div class="form-group">
-                <label for="username">Username</label>
+                <label for="username">Username:</label>
                 <input type="text" name="username" class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>">
                 <span class="invalid-feedback"><?php echo $username_err; ?></span>
             </div>
             <div class="form-group">
-                <label for="password">Password</label>
+                <label for="password">Password:</label>
                 <input type="password" name="password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>">
                 <span class="invalid-feedback"><?php echo $password_err; ?></span>
             </div>
             <div class="form-group">
                 <button type="submit" class="btn btn-primary btn-block">Login</button>
             </div>
-            <p class="text-center">Don't have an account? <a href="register.php">Sign up now</a>.</p>
+            <p class="text-center">Click here to <a href="register.php">Register</a> an account.</p>
         </form>
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
